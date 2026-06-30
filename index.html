@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla Interactiva - Tecnología Médica</title>
     
-    <!-- Fuente Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos Phosphor (Modernos y limpios) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,9 +16,7 @@
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        // Colores de la universidad/carrera
-                        ust: '#4f46e5', // Indigo 600 - Color principal (título)
-                        // Colores de estado
+                        ust: '#4f46e5', 
                         'estado-aprobado': '#dcfce7',
                         'estado-aprobado-dark': '#14532d',
                         'estado-disponible': '#fef3c7',
@@ -35,60 +30,31 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            height: 8px;
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-            border-radius: 4px;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #334155; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
+        ::-webkit-scrollbar { height: 8px; width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-track { background: #334155; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Toggle Switch animado */
-        .toggle-checkbox:checked {
-            right: 0;
-            border-color: #4f46e5;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #4f46e5;
-        }
+        .toggle-checkbox:checked { right: 0; border-color: #4f46e5; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #4f46e5; }
         
-        .ramo-card {
-            transition: all 0.2s ease-in-out;
-        }
-        .ramo-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+        .ramo-card { transition: all 0.2s ease-in-out; }
+        .ramo-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
     </style>
 </head>
 <body class="bg-[#f8fafc] dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
     <div class="max-w-[1600px] mx-auto p-4 md:p-8">
         
-        <!-- Cabecera -->
         <header class="flex justify-between items-center mb-8">
             <div>
                 <h1 class="text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400">Tecnología Médica</h1>
                 <p class="text-slate-500 dark:text-slate-400 mt-1">Malla interactiva y seguimiento de tu progreso académico (Mención Oftalmología)</p>
             </div>
             
-            <!-- Dark Mode Toggle -->
             <div class="flex items-center gap-2">
                 <i class="ph ph-sun text-xl text-amber-500"></i>
                 <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -99,9 +65,7 @@
             </div>
         </header>
 
-        <!-- Dashboard Stats -->
         <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-6">
-            <!-- Quitamos los créditos y dejamos 3 columnas -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-6 text-center divide-x divide-slate-100 dark:divide-slate-700">
                 <div>
                     <div id="stat-total" class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">49</div>
@@ -117,30 +81,33 @@
                 </div>
             </div>
             
-            <!-- Progress Bar -->
             <div class="w-full bg-indigo-50 dark:bg-slate-700 rounded-full h-4 overflow-hidden relative">
                 <div id="progress-bar-fill" class="bg-indigo-300 dark:bg-indigo-500 h-4 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
                 <span class="absolute inset-0 flex items-center justify-start pl-2 text-[10px] font-bold text-indigo-700 dark:text-white" id="progress-bar-text">0%</span>
             </div>
         </div>
 
-        <!-- Leyenda Estados -->
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 mb-4 flex justify-center gap-6 text-sm font-medium">
-            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-aprobado dark:bg-estado-aprobado-dark border border-green-200 dark:border-green-800"></div> Aprobado</div>
-            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-disponible dark:bg-estado-disponible-dark border border-amber-200 dark:border-amber-800"></div> Disponible</div>
-            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-bloqueado dark:bg-estado-bloqueado-dark border border-slate-200 dark:border-slate-600"></div> Bloqueado</div>
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 mb-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium">
+            <div class="flex gap-6">
+                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-aprobado dark:bg-estado-aprobado-dark border border-green-200 dark:border-green-800"></div> Aprobado</div>
+                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-disponible dark:bg-estado-disponible-dark border border-amber-200 dark:border-amber-800"></div> Disponible</div>
+                <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-estado-bloqueado dark:bg-estado-bloqueado-dark border border-slate-200 dark:border-slate-600"></div> Bloqueado</div>
+            </div>
+            <div class="flex gap-4 text-slate-500 dark:text-slate-400 text-xs">
+                <span>🔬 Laboratorio</span>
+                <span>🏥 Clínica/Terreno</span>
+                <span>🩺 Simulación</span>
+                <span>🤝 A+S</span>
+            </div>
         </div>
 
-        <!-- Filtros por Área -->
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 mb-6 flex flex-wrap gap-2 items-center" id="contenedor-filtros">
-            <!-- Se llenan por JS -->
         </div>
 
-        <!-- Toolbar (Botones y Buscador) -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
             <div class="flex gap-3 w-full md:w-auto">
                 <button onclick="resetMalla()" class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors w-full md:w-auto">
-                    <i class="ph ph-arrow-counter-clockwise"></i> Reiniciar
+                    <i class="ph ph-arrow-counter-clockwise"></i> Reiniciar Malla
                 </button>
                 <button onclick="toggleFiltroDisponibles()" id="btn-disponibles" class="flex items-center justify-center gap-2 bg-indigo-100 dark:bg-slate-700 hover:bg-indigo-200 dark:hover:bg-slate-600 text-indigo-700 dark:text-indigo-300 px-4 py-2 rounded-lg font-medium transition-colors w-full md:w-auto">
                     <i class="ph ph-eye"></i> Disponibles
@@ -153,17 +120,11 @@
             </div>
         </div>
 
-        <!-- Malla Grid -->
         <div id="contenedor-malla" class="flex overflow-x-auto gap-6 pb-8 snap-x">
-            <!-- Semestres se generan aquí -->
         </div>
-
     </div>
 
     <script>
-        // --- 1. CONFIGURACIÓN Y DATOS ---
-
-        // Áreas formativas alineadas a la leyenda oficial de la malla con nombres cortos para los botones
         const AREAS = {
             "Formación General": { bg: "bg-[#e53e3e]", text: "Form. General" },
             "Comunes de la Facultad": { bg: "bg-[#63b3ed]", text: "Comunes" },
@@ -178,97 +139,111 @@
             "Área Educación": { bg: "bg-[#fef08a]", text: "Educación" }
         };
 
-        // Estado Global
         let filtroAreaActual = "Todos";
         let mostrarSoloDisponibles = false;
 
-        // Datos de la Malla (Sin créditos, actualizando las áreas a los nombres exactos)
+        // Datos con iconos incluidos
         let ramos = [
             // SEMESTRE 1
-            { id: "mat1", sigla: "MAT101", nombre: "Principios Matemáticos", semestre: 1, area: "Área de Investigación", pre: [], estado: "pendiente" },
-            { id: "bio1", sigla: "BIO101", nombre: "Biología Celular", semestre: 1, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
-            { id: "tal1", sigla: "TCI101", nombre: "Taller Integrado en Ciencias", semestre: 1, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
-            { id: "int1", sigla: "ITM101", nombre: "Introducción a la Tecnología Médica", semestre: 1, area: "Área Optometría Clínica", pre: [], estado: "pendiente" },
-            { id: "ing1", sigla: "ENG101", nombre: "Inglés Básico I", semestre: 1, area: "Formación General", pre: [], estado: "pendiente" },
-            { id: "com1", sigla: "TCC101", nombre: "Taller Competencias Comunicativas", semestre: 1, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "mat1", sigla: "MAT101", nombre: "Principios Matemáticos", iconos: "", semestre: 1, area: "Área de Investigación", pre: [], estado: "pendiente" },
+            { id: "bio1", sigla: "BIO101", nombre: "Biología Celular", iconos: "🔬", semestre: 1, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
+            { id: "tal1", sigla: "TCI101", nombre: "Taller Integrado en Ciencias", iconos: "", semestre: 1, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
+            { id: "int1", sigla: "ITM101", nombre: "Introducción a la Tecnología Médica", iconos: "", semestre: 1, area: "Área Optometría Clínica", pre: [], estado: "pendiente" },
+            { id: "ing1", sigla: "ENG101", nombre: "Inglés Básico I", iconos: "", semestre: 1, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "com1", sigla: "TCC101", nombre: "Taller Competencias Comunicativas", iconos: "", semestre: 1, area: "Formación General", pre: [], estado: "pendiente" },
             
             // SEMESTRE 2
-            { id: "fis2", sigla: "FIS102", nombre: "Biofísica", semestre: 2, area: "Comunes de la Facultad", pre: ["mat1"], estado: "bloqueado" },
-            { id: "urg2", sigla: "URG102", nombre: "Atención Básica de Urgencia", semestre: 2, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
-            { id: "mol2", sigla: "BIO102", nombre: "Biomoléculas Estructura y Función", semestre: 2, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
-            { id: "ana2", sigla: "ANA102", nombre: "Anatomía", semestre: 2, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
-            { id: "ing2", sigla: "ENG102", nombre: "Inglés Básico II", semestre: 2, area: "Formación General", pre: ["ing1"], estado: "bloqueado" },
-            { id: "ele1", sigla: "ELC102", nombre: "Electivo Formación General I", semestre: 2, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "fis2", sigla: "FIS102", nombre: "Biofísica", iconos: "", semestre: 2, area: "Comunes de la Facultad", pre: ["mat1"], estado: "bloqueado" },
+            { id: "urg2", sigla: "URG102", nombre: "Atención Básica de Urgencia", iconos: "🩺", semestre: 2, area: "Bases de las distintas áreas de formación", pre: [], estado: "pendiente" },
+            { id: "mol2", sigla: "BIO102", nombre: "Biomoléculas Estructura y Función", iconos: "🔬", semestre: 2, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
+            { id: "ana2", sigla: "ANA102", nombre: "Anatomía", iconos: "🔬", semestre: 2, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
+            { id: "ing2", sigla: "ENG102", nombre: "Inglés Básico II", iconos: "", semestre: 2, area: "Formación General", pre: ["ing1"], estado: "bloqueado" },
+            { id: "ele1", sigla: "ELC102", nombre: "Electivo Formación General I", iconos: "", semestre: 2, area: "Formación General", pre: [], estado: "pendiente" },
 
             // SEMESTRE 3
-            { id: "est3", sigla: "EST201", nombre: "Estadística y Epidemiología", semestre: 3, area: "Área de Investigación", pre: ["mat1"], estado: "bloqueado" },
-            { id: "his3", sigla: "HIS201", nombre: "Histología", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
-            { id: "bioq3", sigla: "BIO201", nombre: "Fundamentos en Bioquímica", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["mol2"], estado: "bloqueado" },
-            { id: "fisi3", sigla: "FIS201", nombre: "Fisiología", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["ana2"], estado: "bloqueado" },
-            { id: "sal3", sigla: "SAL201", nombre: "Salud y Sociedad", semestre: 3, area: "Área Gestión y Administración", pre: [], estado: "pendiente" },
-            { id: "ele2", sigla: "ELC201", nombre: "Electivo Formación General II", semestre: 3, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "est3", sigla: "EST201", nombre: "Estadística y Epidemiología", iconos: "", semestre: 3, area: "Área de Investigación", pre: ["mat1"], estado: "bloqueado" },
+            { id: "his3", sigla: "HIS201", nombre: "Histología", iconos: "🔬", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
+            { id: "bioq3", sigla: "BIO201", nombre: "Fundamentos en Bioquímica", iconos: "🔬", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["mol2"], estado: "bloqueado" },
+            { id: "fisi3", sigla: "FIS201", nombre: "Fisiología", iconos: "🔬", semestre: 3, area: "Bases de las distintas áreas de formación", pre: ["ana2"], estado: "bloqueado" },
+            { id: "sal3", sigla: "SAL201", nombre: "Salud y Sociedad", iconos: "", semestre: 3, area: "Área Gestión y Administración", pre: [], estado: "pendiente" },
+            { id: "ele2", sigla: "ELC201", nombre: "Electivo Formación General II", iconos: "", semestre: 3, area: "Formación General", pre: [], estado: "pendiente" },
 
             // SEMESTRE 4
-            { id: "bios4", sigla: "PRE202", nombre: "Bioseguridad y Proc. Preanalíticos", semestre: 4, area: "Área Gestión y Administración", pre: ["urg2"], estado: "bloqueado" },
-            { id: "inmu4", sigla: "INM202", nombre: "Inmunología Básica", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
-            { id: "fiso4", sigla: "FSO202", nombre: "Física Oftálmica", semestre: 4, area: "Comunes de la Facultad", pre: ["fis2"], estado: "bloqueado" },
-            { id: "fpat4", sigla: "FPA202", nombre: "Fisiopatología", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["fisi3"], estado: "bloqueado" },
-            { id: "anaoc4", sigla: "ANO202", nombre: "Anatomía Ocular y Vía Visual", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["ana2"], estado: "bloqueado" },
-            { id: "ele3", sigla: "ELC202", nombre: "Electivo Formación General III", semestre: 4, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "bios4", sigla: "PRE202", nombre: "Bioseguridad y Proc. Preanalíticos", iconos: "", semestre: 4, area: "Área Gestión y Administración", pre: ["urg2"], estado: "bloqueado" },
+            { id: "inmu4", sigla: "INM202", nombre: "Inmunología Básica", iconos: "🔬", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["bio1"], estado: "bloqueado" },
+            { id: "fiso4", sigla: "FSO202", nombre: "Física Oftálmica", iconos: "🔬", semestre: 4, area: "Comunes de la Facultad", pre: ["fis2"], estado: "bloqueado" },
+            { id: "fpat4", sigla: "FPA202", nombre: "Fisiopatología", iconos: "🔬", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["fisi3"], estado: "bloqueado" },
+            { id: "anaoc4", sigla: "ANO202", nombre: "Anatomía Ocular y Vía Visual", iconos: "🔬", semestre: 4, area: "Bases de las distintas áreas de formación", pre: ["ana2"], estado: "bloqueado" },
+            { id: "ele3", sigla: "ELC202", nombre: "Electivo Formación General III", iconos: "", semestre: 4, area: "Formación General", pre: [], estado: "pendiente" },
 
             // SEMESTRE 5
-            { id: "patv5", sigla: "PAT301", nombre: "Fisiología y Patología Sis. Visual I", semestre: 5, area: "Área Polo Anterior y Anexos Oculares", pre: ["anaoc4", "fpat4"], estado: "bloqueado" },
-            { id: "oftg5", sigla: "OFT301", nombre: "Oftalmología General", semestre: 5, area: "Área Polo Anterior y Anexos Oculares", pre: ["anaoc4"], estado: "bloqueado" },
-            { id: "farm5", sigla: "FAR301", nombre: "Oftalmofarmacología", semestre: 5, area: "Área Visión Binocular y Estrabismo", pre: ["fisi3"], estado: "bloqueado" },
-            { id: "visb5", sigla: "VIS301", nombre: "Visión Binocular", semestre: 5, area: "Área Visión Binocular y Estrabismo", pre: ["fiso4"], estado: "bloqueado" },
-            { id: "etic5", sigla: "ETI301", nombre: "Ética Profesional", semestre: 5, area: "Área Educación", pre: [], estado: "pendiente" },
-            { id: "pers5", sigla: "PER301", nombre: "Persona y Sentido", semestre: 5, area: "Formación General", pre: [], estado: "pendiente" },
+            { id: "patv5", sigla: "PAT301", nombre: "Fisiología y Patología Sis. Visual I", iconos: "🔬", semestre: 5, area: "Área Polo Anterior y Anexos Oculares", pre: ["anaoc4", "fpat4"], estado: "bloqueado" },
+            { id: "oftg5", sigla: "OFT301", nombre: "Oftalmología General", iconos: "🏥", semestre: 5, area: "Área Polo Anterior y Anexos Oculares", pre: ["anaoc4"], estado: "bloqueado" },
+            { id: "farm5", sigla: "FAR301", nombre: "Oftalmofarmacología", iconos: "🏥", semestre: 5, area: "Área Visión Binocular y Estrabismo", pre: ["fisi3"], estado: "bloqueado" },
+            { id: "visb5", sigla: "VIS301", nombre: "Visión Binocular", iconos: "🏥", semestre: 5, area: "Área Visión Binocular y Estrabismo", pre: ["fiso4"], estado: "bloqueado" },
+            { id: "etic5", sigla: "ETI301", nombre: "Ética Profesional", iconos: "", semestre: 5, area: "Área Educación", pre: [], estado: "pendiente" },
+            { id: "pers5", sigla: "PER301", nombre: "Persona y Sentido", iconos: "", semestre: 5, area: "Formación General", pre: [], estado: "pendiente" },
 
             // SEMESTRE 6
-            { id: "patv6", sigla: "PAT302", nombre: "Fisiología y Patología Sis. Visual II", semestre: 6, area: "Área Polo Anterior y Anexos Oculares", pre: ["patv5"], estado: "bloqueado" },
-            { id: "camp6", sigla: "CAM302", nombre: "Estudio del Campo Visual", semestre: 6, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
-            { id: "optb6", sigla: "OPT302", nombre: "Optometría Clínica Básica", semestre: 6, area: "Área Optometría Clínica", pre: ["oftg5", "fiso4"], estado: "bloqueado" },
-            { id: "estr6", sigla: "EST302", nombre: "Estrabismo y Ortóptica", semestre: 6, area: "Área Visión Binocular y Estrabismo", pre: ["visb5"], estado: "bloqueado" },
-            { id: "eled1", sigla: "ELD302", nombre: "Electivo Disciplinar I", semestre: 6, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
+            { id: "patv6", sigla: "PAT302", nombre: "Fisiología y Patología Sis. Visual II", iconos: "🏥", semestre: 6, area: "Área Polo Anterior y Anexos Oculares", pre: ["patv5"], estado: "bloqueado" },
+            { id: "camp6", sigla: "CAM302", nombre: "Estudio del Campo Visual", iconos: "🏥", semestre: 6, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
+            { id: "optb6", sigla: "OPT302", nombre: "Optometría Clínica Básica", iconos: "🏥 🤝", semestre: 6, area: "Área Optometría Clínica", pre: ["oftg5", "fiso4"], estado: "bloqueado" },
+            { id: "estr6", sigla: "EST302", nombre: "Estrabismo y Ortóptica", iconos: "🏥", semestre: 6, area: "Área Visión Binocular y Estrabismo", pre: ["visb5"], estado: "bloqueado" },
+            { id: "eled1", sigla: "ELD302", nombre: "Electivo Disciplinar I", iconos: "", semestre: 6, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
 
             // SEMESTRE 7
-            { id: "ecob7", sigla: "ECO401", nombre: "Ecobiometría Ocular", semestre: 7, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
-            { id: "imag7", sigla: "IMA401", nombre: "Imagenología Ocular", semestre: 7, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
-            { id: "opta7", sigla: "OPT401", nombre: "Optometría Clínica Avanzada", semestre: 7, area: "Área Optometría Clínica", pre: ["optb6"], estado: "bloqueado" },
-            { id: "neur7", sigla: "NEU401", nombre: "Neuroftalmología", semestre: 7, area: "Área Visión Binocular y Estrabismo", pre: ["camp6"], estado: "bloqueado" },
-            { id: "eled2", sigla: "ELD401", nombre: "Electivo Disciplinar II", semestre: 7, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
+            { id: "ecob7", sigla: "ECO401", nombre: "Ecobiometría Ocular", iconos: "🏥", semestre: 7, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
+            { id: "imag7", sigla: "IMA401", nombre: "Imagenología Ocular", iconos: "🏥", semestre: 7, area: "Área Polo Anterior y Anexos Oculares", pre: ["oftg5"], estado: "bloqueado" },
+            { id: "opta7", sigla: "OPT401", nombre: "Optometría Clínica Avanzada", iconos: "🏥 🤝", semestre: 7, area: "Área Optometría Clínica", pre: ["optb6"], estado: "bloqueado" },
+            { id: "neur7", sigla: "NEU401", nombre: "Neuroftalmología", iconos: "🏥", semestre: 7, area: "Área Visión Binocular y Estrabismo", pre: ["camp6"], estado: "bloqueado" },
+            { id: "eled2", sigla: "ELD401", nombre: "Electivo Disciplinar II", iconos: "", semestre: 7, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
 
             // SEMESTRE 8
-            { id: "meto8", sigla: "MET402", nombre: "Metodología de la Investigación", semestre: 8, area: "Área de Investigación", pre: ["est3"], estado: "bloqueado" },
-            { id: "ciru8", sigla: "CIR402", nombre: "Apoyo en Cirugía Refractiva", semestre: 8, area: "Área Polo Anterior y Anexos Oculares", pre: ["ecob7"], estado: "bloqueado" },
-            { id: "reti8", sigla: "RET402", nombre: "Retina Clínica", semestre: 8, area: "Área Glaucoma y Retina", pre: ["imag7"], estado: "bloqueado" },
-            { id: "cont8", sigla: "CON402", nombre: "Contactología", semestre: 8, area: "Área Optometría Clínica", pre: ["opta7"], estado: "bloqueado" },
-            { id: "eled3", sigla: "ELD402", nombre: "Electivo Disciplinar III", semestre: 8, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
+            { id: "meto8", sigla: "MET402", nombre: "Metodología de la Investigación", iconos: "", semestre: 8, area: "Área de Investigación", pre: ["est3"], estado: "bloqueado" },
+            { id: "ciru8", sigla: "CIR402", nombre: "Apoyo en Cirugía Refractiva", iconos: "🏥", semestre: 8, area: "Área Polo Anterior y Anexos Oculares", pre: ["ecob7"], estado: "bloqueado" },
+            { id: "reti8", sigla: "RET402", nombre: "Retina Clínica", iconos: "🏥", semestre: 8, area: "Área Glaucoma y Retina", pre: ["imag7"], estado: "bloqueado" },
+            { id: "cont8", sigla: "CON402", nombre: "Contactología", iconos: "🏥", semestre: 8, area: "Área Optometría Clínica", pre: ["opta7"], estado: "bloqueado" },
+            { id: "eled3", sigla: "ELD402", nombre: "Electivo Disciplinar III", iconos: "", semestre: 8, area: "Electivas Disciplinares", pre: [], estado: "pendiente" },
 
             // SEMESTRE 9
-            { id: "semi9", sigla: "SEM501", nombre: "Seminario de Investigación I", semestre: 9, area: "Área de Investigación", pre: ["meto8"], estado: "bloqueado" },
-            { id: "inte9", sigla: "INT501", nombre: "Integración de Casos Clínicos", semestre: 9, area: "Área Educación", pre: ["reti8", "estr6", "neur7"], estado: "bloqueado" },
-            { id: "int1_9", sigla: "INP501", nombre: "Internado Profesional I", semestre: 9, area: "Bases de las distintas áreas de formación", pre: ["reti8", "ciru8", "cont8"], estado: "bloqueado" },
-            { id: "int2_9", sigla: "INP502", nombre: "Internado Profesional II", semestre: 9, area: "Bases de las distintas áreas de formación", pre: ["reti8", "ciru8", "cont8"], estado: "bloqueado" },
-            { id: "gest9", sigla: "GES501", nombre: "Gestión y Admin. en Oftalmología", semestre: 9, area: "Área Gestión y Administración", pre: ["bios4"], estado: "bloqueado" },
+            { id: "semi9", sigla: "SEM501", nombre: "Seminario de Investigación I", iconos: "", semestre: 9, area: "Área de Investigación", pre: ["meto8"], estado: "bloqueado" },
+            { id: "inte9", sigla: "INT501", nombre: "Integración de Casos Clínicos", iconos: "🏥", semestre: 9, area: "Área Educación", pre: ["reti8", "estr6", "neur7"], estado: "bloqueado" },
+            { id: "int1_9", sigla: "INP501", nombre: "Internado Profesional I", iconos: "🏥", semestre: 9, area: "Bases de las distintas áreas de formación", pre: ["reti8", "ciru8", "cont8"], estado: "bloqueado" },
+            { id: "int2_9", sigla: "INP502", nombre: "Internado Profesional II", iconos: "🏥", semestre: 9, area: "Bases de las distintas áreas de formación", pre: ["reti8", "ciru8", "cont8"], estado: "bloqueado" },
+            { id: "gest9", sigla: "GES501", nombre: "Gestión y Admin. en Oftalmología", iconos: "🏥", semestre: 9, area: "Área Gestión y Administración", pre: ["bios4"], estado: "bloqueado" },
 
             // SEMESTRE 10
-            { id: "semi10", sigla: "SEM502", nombre: "Seminario de Investigación II", semestre: 10, area: "Área de Investigación", pre: ["semi9"], estado: "bloqueado" },
-            { id: "tall10", sigla: "TAL502", nombre: "Taller de Empleabilidad", semestre: 10, area: "Área Educación", pre: [], estado: "pendiente" },
-            { id: "int3_10", sigla: "INP503", nombre: "Internado Profesional III", semestre: 10, area: "Bases de las distintas áreas de formación", pre: ["int1_9", "int2_9"], estado: "bloqueado" },
-            { id: "int4_10", sigla: "INP504", nombre: "Internado Profesional IV", semestre: 10, area: "Bases de las distintas áreas de formación", pre: ["int1_9", "int2_9"], estado: "bloqueado" }
+            { id: "semi10", sigla: "SEM502", nombre: "Seminario de Investigación II", iconos: "", semestre: 10, area: "Área de Investigación", pre: ["semi9"], estado: "bloqueado" },
+            { id: "tall10", sigla: "TAL502", nombre: "Taller de Empleabilidad", iconos: "", semestre: 10, area: "Área Educación", pre: [], estado: "pendiente" },
+            { id: "int3_10", sigla: "INP503", nombre: "Internado Profesional III", iconos: "🏥", semestre: 10, area: "Bases de las distintas áreas de formación", pre: ["int1_9", "int2_9"], estado: "bloqueado" },
+            { id: "int4_10", sigla: "INP504", nombre: "Internado Profesional IV", iconos: "🏥", semestre: 10, area: "Bases de las distintas áreas de formación", pre: ["int1_9", "int2_9"], estado: "bloqueado" }
         ];
 
+        // LOGICA DE GUARDADO (LOCALSTORAGE)
+        function guardarProgreso() {
+            const aprobados = ramos.filter(r => r.estado === 'aprobado').map(r => r.id);
+            localStorage.setItem('malla_tm_progreso', JSON.stringify(aprobados));
+        }
 
+        function cargarProgreso() {
+            const guardado = localStorage.getItem('malla_tm_progreso');
+            if (guardado) {
+                const aprobados = JSON.parse(guardado);
+                aprobados.forEach(id => {
+                    const ramo = ramos.find(r => r.id === id);
+                    if (ramo) ramo.estado = 'aprobado';
+                });
+            }
+        }
+
+        // DOM e Interfaz
         function inicializarFiltros() {
             const contenedor = document.getElementById('contenedor-filtros');
             contenedor.innerHTML = `<button onclick="setFiltro('Todos')" id="filter-Todos" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white">Todos</button>`;
             
             Object.keys(AREAS).forEach(area => {
                 const colorBg = AREAS[area].bg.replace('bg-[', '').replace(']', '');
-                // El ID no puede tener espacios u otros caracteres especiales, por lo que usamos replace
                 const safeId = area.replace(/[^a-zA-Z0-9]/g, ''); 
-                // Usamos AREAS[area].text para que el botón muestre el nombre corto
                 contenedor.innerHTML += `
                     <button onclick="setFiltro('${area}')" id="filter-${safeId}" 
                         class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors border bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
@@ -281,7 +256,6 @@
 
         function setFiltro(area) {
             filtroAreaActual = area;
-            // Actualizar botones visualmente
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-slate-200', 'dark:bg-slate-700', 'ring-2', 'ring-indigo-500');
                 const safeId = area.replace(/[^a-zA-Z0-9]/g, '');
@@ -309,11 +283,9 @@
             renderizarMalla();
         }
 
-        // Buscador
         document.getElementById('buscador').addEventListener('input', (e) => {
             renderizarMalla(e.target.value.toLowerCase());
         });
-
 
         function renderizarMalla(searchTerm = "") {
             const contenedor = document.getElementById('contenedor-malla');
@@ -322,7 +294,6 @@
             for (let i = 1; i <= 10; i++) {
                 const ramosSemestre = ramos.filter(r => r.semestre === i);
                 
-                // Columna de Semestre
                 let columnaHtml = `
                     <div class="flex-none w-[320px] bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 snap-start">
                         <h2 class="text-center text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 pb-2 border-b border-slate-100 dark:border-slate-700">
@@ -334,15 +305,13 @@
                 ramosSemestre.forEach(ramo => {
                     evaluarBloqueos(ramo);
 
-                    // Filtros lógicos
                     let ocultar = false;
                     if (filtroAreaActual !== "Todos" && ramo.area !== filtroAreaActual) ocultar = true;
                     if (mostrarSoloDisponibles && ramo.estado !== "pendiente") ocultar = true;
                     if (searchTerm && !ramo.nombre.toLowerCase().includes(searchTerm) && !ramo.sigla.toLowerCase().includes(searchTerm)) ocultar = true;
 
-                    if (ocultar) return; // Saltar este ramo si no cumple filtros
+                    if (ocultar) return;
 
-                    // Clases según estado
                     let bgClass = "bg-estado-disponible dark:bg-estado-disponible-dark text-slate-800 dark:text-slate-100"; 
                     let cursor = "cursor-pointer";
                     let stateIcon = "";
@@ -362,13 +331,13 @@
                         <div onclick="cambiarEstado('${ramo.id}')" 
                              class="ramo-card relative flex flex-col rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden ${bgClass} ${cursor}">
                             
-                            <!-- Borde de color de área a la izquierda -->
                             <div class="absolute left-0 top-0 bottom-0 w-2" style="background-color: ${borderColor};"></div>
-                            
                             ${stateIcon}
 
                             <div class="p-4 pl-5">
-                                <h3 class="font-semibold text-sm leading-tight mb-2 pr-4">${ramo.nombre}</h3>
+                                <h3 class="font-semibold text-sm leading-tight mb-2 pr-4">
+                                    ${ramo.nombre} <span class="text-base ml-1">${ramo.iconos}</span>
+                                </h3>
                                 
                                 <div class="border-t border-dashed border-slate-300 dark:border-slate-600 my-2"></div>
                                 
@@ -387,9 +356,7 @@
             actualizarProgreso();
         }
 
-
         function evaluarBloqueos(ramo) {
-            // Si no tiene prerequisitos y estaba bloqueado, abrirlo
             if (ramo.pre.length === 0 && ramo.estado === 'bloqueado') {
                 ramo.estado = 'pendiente';
                 return;
@@ -406,7 +373,6 @@
             if (ramo.estado === 'bloqueado' && todosAprobados) {
                 ramo.estado = 'pendiente';
             } else if (ramo.estado !== 'bloqueado' && !todosAprobados) {
-                // Si se desaprobó un requisito hacia atrás, volver a bloquear y propagar
                 ramo.estado = 'bloqueado';
                 desaprobarHaciaAdelante(ramo.id);
             }
@@ -416,24 +382,23 @@
             ramos.forEach(r => {
                 if (r.pre.includes(id) && r.estado === 'aprobado') {
                     r.estado = 'bloqueado';
-                    desaprobarHaciaAdelante(r.id); // Recursión para efecto dominó
+                    desaprobarHaciaAdelante(r.id); 
                 }
             });
         }
 
         function cambiarEstado(id) {
             const ramo = ramos.find(r => r.id === id);
-            
-            if (ramo.estado === 'bloqueado') return; // No hacer nada si está bloqueado
+            if (ramo.estado === 'bloqueado') return; 
 
-            // Alternar: pendiente -> aprobado -> pendiente
             if (ramo.estado === 'pendiente') {
                 ramo.estado = 'aprobado';
             } else if (ramo.estado === 'aprobado') {
                 ramo.estado = 'pendiente';
             }
 
-            renderizarMalla(); // Re-renderizar evalúa los bloqueos automáticamente
+            renderizarMalla(); 
+            guardarProgreso(); // Se guarda el cambio localmente
         }
 
         function actualizarProgreso() {
@@ -443,11 +408,9 @@
             
             const porcentaje = totalRamos === 0 ? 0 : Math.round((cantidadAprobados / totalRamos) * 100);
 
-            // Animar números (sin créditos)
             document.getElementById('stat-aprobados').innerText = cantidadAprobados;
             document.getElementById('stat-progreso').innerText = `${porcentaje}%`;
 
-            // Animar barra
             const barraFill = document.getElementById('progress-bar-fill');
             const barraText = document.getElementById('progress-bar-text');
             barraFill.style.width = `${porcentaje}%`;
@@ -455,18 +418,20 @@
         }
 
         function resetMalla() {
-            ramos.forEach(r => {
-                if (r.pre.length > 0) r.estado = 'bloqueado';
-                else r.estado = 'pendiente';
-            });
-            renderizarMalla();
+            // Confirmación extra por si el usuario presiona por error
+            if(confirm("¿Estás seguro de que quieres reiniciar todo tu progreso?")) {
+                ramos.forEach(r => {
+                    if (r.pre.length > 0) r.estado = 'bloqueado';
+                    else r.estado = 'pendiente';
+                });
+                renderizarMalla();
+                guardarProgreso(); // Se guarda la malla en blanco
+            }
         }
-
 
         const themeToggle = document.getElementById('theme-toggle');
         const htmlClassList = document.documentElement.classList;
 
-        // Comprobar preferencia del sistema o localStorage
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             htmlClassList.add('dark');
             themeToggle.checked = true;
@@ -487,6 +452,7 @@
 
         // Iniciar App
         window.onload = () => {
+            cargarProgreso(); // Primero cargamos lo guardado
             inicializarFiltros();
             renderizarMalla();
         };
